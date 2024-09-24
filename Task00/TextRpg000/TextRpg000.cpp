@@ -60,7 +60,7 @@ void StatusRender(const char* _Name, int _Att, int _HP)
 {
     printf_s("%s Status ", _Name);
     
-    // %s의 글자수에 따라서 출력되는 -의 개수가 달라져야 함. 
+    // _Name의 글자 수에 따라서 출력되는 -의 개수가 달라져야 함. 
     int StringSize = strlen(" Status ");
     int PrintSize = strlen(_Name) + StringSize;
 
