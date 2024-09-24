@@ -89,6 +89,15 @@ void MonsterStatusRender()
     StatusRender(MonsterName, MonsterAtt, MonsterHp);
 }
 
+// 클래스의 필요성
+// 함수는 다양한 상황에서 쓸수있게 만들수록 좋다.
+// 함수는 작은 기능을 많이 만들고 
+// 함수는 한번에 1가지 일을 할수록 좋다.
+// 로직과 랜더를 분리해야 한다.
+
+// 페이즈
+// 전부 지우고 작성
+
 void PrintDamage(const char* const _AttName, const char* const _DefName, int _Att)
 {
     // 랜더링
@@ -103,14 +112,6 @@ void DecreaseHp(int& _DefHp, int _Att)
     _DefHp -= _Att;
 }
 
-// 클래스의 필요성
-// 함수는 다양한 상황에서 쓸수있게 만들수록 좋다.
-// 함수는 작은 기능을 많이 만들고 
-// 함수는 한번에 1가지 일을 할수록 좋다.
-// 로직과 랜더를 분리해야 한다.
-
-// 페이즈
-// 전부 지우고 작성
 void Damage(const char* const _AttName, const char* const _DefName, int& _DefHp, int _Att)
 { 
     // 랜더링
