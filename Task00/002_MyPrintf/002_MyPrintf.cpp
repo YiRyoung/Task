@@ -63,7 +63,7 @@ int MyPrintf(const char* const _Ptr, ...)
 				char Arr[IntMaxCount] = {};
 				NumberToString(Arr, IntMaxCount, ConvertValue);
 
-				MyPrintf("100");
+				MyPrintf(Arr);
 				ChCount += 2;
 				break;
 			}
@@ -94,7 +94,7 @@ void ReFunction()
 
 int main()
 {
-	MyPrintf("Number : %d\n", 12321);
+	MyPrintf("Number : %d\n", 76587);
 
 
 }
