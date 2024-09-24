@@ -22,26 +22,6 @@ int StringCount(const char* const _Str)
     return Count;
 }
 
-const int IntMaxCount = 10;
-const int ParameterInter = 8;
-
-// 함수의 인자는 무조건 8바이트씩 떨어져 있다.
-int MyPrintf(const char* const _Ptr, ...)
-{
-	__int64 FAdd = reinterpret_cast<__int64>(&_Ptr);
-
-	int ChCount = 0;
-
-	while (_Ptr[ChCount])
-	{
-		char Ch = _Ptr[ChCount];
-		putchar(_Ptr[ChCount]);
-		ChCount += 1;
-	}
-
-	return ChCount;
-}
-
 void PlusString(char* _Buffer, int _BufferSize, const char* const _Value0, const char* const _Value1)
 {
     // _Value0의 자리수를 먼저 세기
@@ -69,9 +49,9 @@ int main()
 {
     char Arr[100] = {};
 
-    //PlusString(Arr, 100, "AAAA", "BBBB");
+    PlusString(Arr, 100, "AAAA", "BBBB");
     //PlusString(Arr, 100, "AAA", "BBBB");
-    PlusString(Arr, 100, "AAABC", "DDD");
+    //PlusString(Arr, 100, "AAABC", "DDD");
 
     std::cout << "Hello World!\n";
 }
