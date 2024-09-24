@@ -154,6 +154,7 @@ int main()
         DecreaseHp(PlayerHp, MonsterAtt);
         PlayerStatusRender();
         MonsterStatusRender();
+        PrintDamage(PlayerName, MonsterName, PlayerAtt);
         PrintDamage(MonsterName, PlayerName, MonsterAtt);
         Input = _getch();
 
