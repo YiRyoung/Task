@@ -31,8 +31,27 @@ int NumberCount(int _Value)
 // 내 기준으로 지금
 // _Value 를 넣어주면 Buffer에 
 // 숫자를 문자열로 만드는 함수.
+const int IntMaxCount = 10;
+
 void NumberToString(char* Buffer, int BufferSize, int _Value)
 {
+    int Count = NumberCount(_Value);
+
+    int MulValue = 1;
+    for (int i = 0; i < Count - 1; i += 1)
+    {
+        MulValue *= 10;
+    }
+
+    for (int i = 0; i < Count; i += 1)
+    {
+        // 12321
+        int CurValue = _Value / MulValue;
+        Buffer[i] = CurValue + '0';
+        _Value -= CurValue * MulValue;
+        MulValue /= 10;
+    }
+
     return;
 }
 
@@ -50,5 +69,6 @@ int main()
     char Buffer[100] = { 0 };
 
     NumberToString(Buffer, 100, 3712);
+    NumberToString(Buffer, 100, 12321);
     // Buffer == "3712"
 }
