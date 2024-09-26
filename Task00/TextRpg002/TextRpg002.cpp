@@ -66,7 +66,7 @@ public:
         Hp -= _AttUnit.GetDamage(_AttUnit);
     }
 
-    void DamageRender(const FightUnit& _AttUnit)
+    void DamageRender(const FightUnit& _AttUnit) const
     {
         printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n",_AttUnit.GetName(), Name, GetDamage(_AttUnit));
     }
@@ -88,6 +88,7 @@ private:
 
 class Player : public FightUnit
 {
+    
 };
 
 class Monster : public FightUnit
@@ -116,7 +117,7 @@ int main()
     {
         NewMonster.DamageLogic(NewPlayer);
         NewMonster.DamageRender(NewPlayer);
-        //ch = _getch();
+        ch = _getch();
     }
 
     // NewPlayer.
