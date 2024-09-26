@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{2F03B7D0-B
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRpg000", "TextRpg000\TextRpg000.vcxproj", "{FC90C47A-7B2F-4FEC-8603-625FF470726E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRpg002", "TextRpg002\TextRpg002.vcxproj", "{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -73,12 +75,21 @@ Global
 		{FC90C47A-7B2F-4FEC-8603-625FF470726E}.Release|x64.Build.0 = Release|x64
 		{FC90C47A-7B2F-4FEC-8603-625FF470726E}.Release|x86.ActiveCfg = Release|Win32
 		{FC90C47A-7B2F-4FEC-8603-625FF470726E}.Release|x86.Build.0 = Release|Win32
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Debug|x64.ActiveCfg = Debug|x64
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Debug|x64.Build.0 = Debug|x64
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Debug|x86.ActiveCfg = Debug|Win32
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Debug|x86.Build.0 = Debug|Win32
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Release|x64.ActiveCfg = Release|x64
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Release|x64.Build.0 = Release|x64
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Release|x86.ActiveCfg = Release|Win32
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FC90C47A-7B2F-4FEC-8603-625FF470726E} = {2F03B7D0-B689-4FAC-B0ED-BCE2D479B7EA}
+		{151FFAEB-1E0E-4A83-A28E-27BC68508EA8} = {2F03B7D0-B689-4FAC-B0ED-BCE2D479B7EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5856C6D-C470-40AF-91F6-52836C0BC6C6}
