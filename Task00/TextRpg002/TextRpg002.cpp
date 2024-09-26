@@ -3,15 +3,15 @@
 
 #include <iostream>
 #include <conio.h>
+#include <Windows.h>
+#include <assert.h>
 
-//class PlayerSaveData
-//{
-//public:
-//    int Hp;
-//    int Att;
-//};
 
-const int NAMELEN = 10;
+#define MSGASSERT(VALUE) MessageBoxA(nullptr, VALUE, "치명적 에러", MB_OK); assert(false);
+
+const int LINECOUNT = 50;
+const int NAMELEN = 20;
+
 
 // 다중상속을 부정적으로 생각하는 사람이 많아요.
 // 1. 다중상속을 제대로 못쓰니까.
@@ -22,6 +22,28 @@ const int NAMELEN = 10;
 
 class StatusUnit
 {
+public:
+    void SetName(const char* const _Name)
+    {
+        if (NAMELEN <= strlen(_Name))
+        {
+            MSGASSERT("이름이 너무 깁니다");
+
+            //// 아주 사소한 경고나 에러라도 무조건 없애고 갈겁니다.
+            //MessageBoxA(nullptr
+            //    , "이름이 너무 깁니다" // 메세지 박스에 뜨는 내용
+            //    , "치명적 에러" // 메세지 박스에 뜨는 제목
+            //    , MB_OK // ok만 존재하는 메세지 박스로 만들어라
+            //);
+            //assert(false);
+
+            // 이 사태가 벌어졌다는것을 어떻게 인지할건가요?
+            return;
+        }
+
+        strcpy_s(Name, _Name);
+    }
+
 protected:
     char Name[NAMELEN] = "NONE";
     int Hp = 100;
@@ -51,24 +73,24 @@ public:
     //}
 
     // MinMax
-    int GetDamage(const FightUnit& _AttUnit) const
+    int GetDamage() const
     {
         // minAtt ~ MaxAtt 사이의 숫자가 리턴되는 함수를 만드세요.
         // return MinAtt + rand
 
-        return _AttUnit.MinAtt + rand() % (_AttUnit.MaxAtt - _AttUnit.MinAtt + 1);
+        return MinAtt + rand() % (MaxAtt - MinAtt + 1);
     }
 
     // 클래스의 레퍼런스를 넣어주는것이 많은게 간단해 집니다.
-    void DamageLogic(const FightUnit& _AttUnit)
+    void DamageLogic(const int _Damage)
     {
         // _AttUnit => 나를 공격하려는 상대
-        Hp -= _AttUnit.GetDamage(_AttUnit);
+        Hp -= _Damage;
     }
 
-    void DamageRender(const FightUnit& _AttUnit)
+    void DamageRender(const FightUnit& _AttUnit, const int _Damage)
     {
-        printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttUnit.GetName(), Name, GetDamage(_AttUnit));
+        printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttUnit.GetName(), Name, _Damage);
     }
 
     const char* GetName() const
@@ -104,18 +126,20 @@ class Monster : public FightUnit
 
 int main()
 {
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
 
     Player NewPlayer;
     Monster NewMonster;
-    //NewMonster.DamageLogic(NewPlayer);
+    NewPlayer.SetName("Player");
+    NewMonster.SetName("Monster");
 
     char ch = ' ';
 
     while (true)
     {
-        NewMonster.DamageLogic(NewPlayer);
-        NewMonster.DamageRender(NewPlayer);
+        int MonsterDamage = NewMonster.GetDamage();
+        NewMonster.DamageLogic(MonsterDamage);
+        NewMonster.DamageRender(NewPlayer, MonsterDamage);
         //ch = _getch();
     }
 
