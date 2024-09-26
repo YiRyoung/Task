@@ -6,7 +6,7 @@
 
 const int LINECOUNT = 50;
 
-const int NAMELEN = 10;
+const int LINECOUNT = 10;
 
 // 절차지향 
 // 어떠한 현실적인 개념을 컴퓨터 세계로 끌고 들어온다.
@@ -15,12 +15,12 @@ int PlayerAttMin = 0;
 int PlayerAtt = 0;
 int PlayerHp = 0;
 int PlayerSpeed = 10;
-char PlayerName[NAMELEN] = "NONE";
+char PlayerName[LINECOUNT] = "NONE";
 
 int MonsterAtt = 10;
 int MonsterHp = 100;
 int MonsterSpeed = 10;
-char MonsterName[NAMELEN] = "NONE";
+char MonsterName[LINECOUNT] = "NONE";
 
 // 아주 중요한
 void StrCopy(char* _Arr, int _BufferSize, const char* const _Name)
@@ -47,7 +47,7 @@ void StrCopy(char* _Arr, int _BufferSize, const char* const _Name)
 void CreatePlayer(const char* const _Ptr, int _Att, int _Hp, int _Speed)
 {
     // char[100] = 300번지
-    StrCopy(PlayerName, NAMELEN, _Ptr);
+    StrCopy(PlayerName, LINECOUNT, _Ptr);
     PlayerAtt = _Att;
     PlayerHp = _Hp;
     PlayerSpeed = _Speed;
@@ -56,7 +56,7 @@ void CreatePlayer(const char* const _Ptr, int _Att, int _Hp, int _Speed)
 // 모든 문법은 코드를 덜치기 위해서 발전해왔습니다.
 void CreateMonster(const char* const _Ptr, int _Att, int _Hp, int _Speed)
 {
-    StrCopy(MonsterName, NAMELEN, _Ptr);
+    StrCopy(MonsterName, LINECOUNT, _Ptr);
     MonsterAtt = _Att;
     MonsterHp = _Hp;
     MonsterSpeed = _Speed;
