@@ -7,15 +7,15 @@
 void UWorld::InPlayer(class UPlayer& _Player)
 {
 	char InputName[100] = {0,};
+	bool IsEnd = false;
 
-	while (true)
+	while (!IsEnd)
 	{
 		system("cls");
 
 		std::cout << "이름을 적어주세요" << std::endl;
 		std::cin >> InputName;
 		printf_s("당신의 이름은 %s입니다. 결정하시겠습니까?\n", InputName);
-		bool IsEnd = false;
 		bool CorrectName = false;
 
 		while (!CorrectName)
@@ -39,10 +39,6 @@ void UWorld::InPlayer(class UPlayer& _Player)
 				continue;
 			}
 
-		}
-		if (true == IsEnd)
-		{
-			break;
 		}
 	}
 
