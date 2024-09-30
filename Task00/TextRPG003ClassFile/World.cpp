@@ -16,9 +16,9 @@ void UWorld::InPlayer(class UPlayer& _Player)
 		std::cin >> InputName;
 		printf_s("당신의 이름은 %s입니다. 결정하시겠습니까?\n", InputName);
 		bool IsEnd = false;
-		bool ReName = false;
+		bool CorrectName = false;
 
-		while (!ReName)
+		while (!CorrectName)
 		{
 			printf_s("a. 결정\n");
 			printf_s("b. 재입력\n");
@@ -28,11 +28,11 @@ void UWorld::InPlayer(class UPlayer& _Player)
 			case 'a':
 			case 'A':
 				IsEnd = true;
-				ReName = true;
+				CorrectName = true;
 				break;
 			case 'b':
 			case 'B':
-				ReName = true;
+				CorrectName = true;
 				break;
 			default:
 				printf_s("잘못된 선택입니다. 다시 선택해주세요\n");
