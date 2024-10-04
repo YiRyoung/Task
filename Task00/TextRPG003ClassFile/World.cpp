@@ -82,18 +82,20 @@ void UWorld::PlayerZonePlay(class UPlayer& _Player)
 	UFightZone FightZone;
 	FightZone.SetName("초보사냥터");
 
+	_Player.SetCurrentMapCode(0);
+
 	while (true)
 	{
-		int MapCode = 0;
+		int MapCode = _Player.GetCurrentMapCode();
 
 		switch (MapCode)
 		{
 		case 0:
-			TownZone0.InPlayer(_Player, MapCode);
+			TownZone0.InPlayer(_Player);
 			break;
+		case 1:
+			TownZone1.InPlayer(_Player);
 		case 2:
-			TownZone1.InPlayer(_Player, MapCode);
-		case 3:
 			FightZone.InPlayer(_Player);
 		}
 	}

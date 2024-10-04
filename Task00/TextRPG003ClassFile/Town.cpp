@@ -3,7 +3,7 @@
 #include "Player.h"
 
 // 포인터나 레퍼런스는 무조건 8바이트 이기 때문에
-void UTown::InPlayer(class UPlayer& _Player, int& _MapCode)
+void UTown::InPlayer(class UPlayer& _Player)
 {
 	InMsgPrint();
 
@@ -33,13 +33,13 @@ void UTown::InPlayer(class UPlayer& _Player, int& _MapCode)
 			// UFightzone FightZone;
 			printf_s("2눌렀습니다.");
 			_getch();
-			_MapCode = 2;
+			_Player.SetCurrentMapCode(2);
 			return;
 		}
 		case '3':
 			printf_s("3눌렀습니다.");
 			_getch();
-			_MapCode = 3;
+			_Player.SetCurrentMapCode(1);
 			return;
 		default:
 			break;
