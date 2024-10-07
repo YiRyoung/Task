@@ -48,7 +48,9 @@ class UPlayer : public UFightUnit
 public:
 	UPlayer();
 
-	void StatusRender() override;
+	void TextPrint() override;
+
+	void StatusRender();
 
 	// 나쁜게 아닌데 절제 없이 하다보면 순환참조 및 문제가 생긴다.
 	// 헤더에다가 구현하다보면 
@@ -71,6 +73,8 @@ public:
 	{
 		return CurZoneIndex;
 	}
+
+	void SaveFileLoad();
 
 protected:
 
