@@ -12,15 +12,6 @@ UPlayer::UPlayer()
 	// std::cout << "플레이어 생성자" << std::endl;
 }
 
-void UPlayer::StatusRender()
-{
-    TopLine();
-
-    TextPrint();
-
-    BotLine();
-}
-
 void UPlayer::TextPrint()
 {
     printf_s("공격력 : %d ~ %d + %d\n", MinAtt, MaxAtt, EquipAtt);
