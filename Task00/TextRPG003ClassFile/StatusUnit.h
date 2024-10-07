@@ -6,7 +6,6 @@ class UStatusUnit : public UObject
 {
 public:
 	void TopLine();
-
 	void BotLine();
 
 	void StatusRender();
@@ -61,7 +60,7 @@ protected:
 	int Speed = 10;
 	int Gold = 0;
 
-	virtual void TextPrint();
+	virtual void StatusTextPrint() {}
 
 private:
 };

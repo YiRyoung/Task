@@ -8,6 +8,11 @@ void UZone::InMsgPrint()
 	std::cout << GetName() << "에 입장했습니다.\n";
 }
 
+void UZone::ZonePrint()
+{
+	std::cout << GetName() << "에 체류중.\n";
+}
+
 bool UZone::IsConnecting(UZone* _LinkZone)
 {
 	for (size_t i = 0; i < LINKZONEMAX; i++)

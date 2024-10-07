@@ -6,6 +6,8 @@ void UStatusUnit::TopLine()
 {
     // TopLine
     const char* Name = GetName();
+    //printf_s("%s Status", GetName());
+    //int NameLan = static_cast<int>(strlen(GetName()));
     printf_s("%s Status", Name);
     int NameLan = static_cast<int>(strlen(Name));
     int StatusRand = static_cast<int>(strlen(" Status"));
@@ -25,12 +27,7 @@ void UStatusUnit::BotLine()
         printf_s("-");
     }
     printf_s("\n");
-}
 
-void UStatusUnit::TextPrint()
-{
-    printf_s("공격력 : %d ~ %d\n", MinAtt, MaxAtt);
-    printf_s("체력 : %d\n", Hp);
 }
 
 void UStatusUnit::StatusRender()
@@ -41,10 +38,13 @@ void UStatusUnit::StatusRender()
     
     // 디버깅상 받는게 유리해서.
     TopLine();
-    TextPrint();
-    BotLine();
-    // 이번에 핵심.
-    // 이것도 쪼개는게 맞다.
 
+    // UStatusUnit* const this;
+    // 부모쪽에서 virtual을 호출해도 자식쪽 virtual이 호출됩니다.
+    this->StatusTextPrint();
+
+    // 가상함수나 이런애들이 더 느립니다.
+    BotLine();
 }
+
 

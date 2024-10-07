@@ -7,7 +7,7 @@ class UZone : public UObject
 {
 public:
 	void InMsgPrint();
-
+	void ZonePrint();
 	// 지역과 지역을 연결한다.
 	// bool 만약 이 지역과 연결될수 없다면
 
