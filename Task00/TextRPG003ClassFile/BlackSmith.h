@@ -19,11 +19,11 @@ public:
 		ParentZone = _ParentZone;
 	}
 
-	bool IsMaxWeaponLv(class UPlayer& _Player);
+	bool IsMaxEquip(class UPlayer& _Player);
 
-	void PrintMaxWeapon();
+	void PrintMaxEquip();
 
-	void ReinforceWeapon(class UPlayer& _Player);
+	void ReinforceEquip(class UPlayer& _Player);
 
 private:
 	// class UZone& ParentZone;

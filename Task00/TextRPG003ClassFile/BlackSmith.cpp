@@ -3,7 +3,7 @@
 #include <BaseSystem/EngineDebug.h>
 #include <conio.h>
 
-bool BlackSmith::IsMaxWeaponLv(class UPlayer& _Player)
+bool BlackSmith::IsMaxEquip(class UPlayer& _Player)
 {
 	if (_Player.GetEquipAtt() >= 15)
 	{
@@ -12,25 +12,27 @@ bool BlackSmith::IsMaxWeaponLv(class UPlayer& _Player)
 	return false;
 }
 
-void BlackSmith::PrintMaxWeapon()
+void BlackSmith::PrintMaxEquip()
 {
 	printf_s("최대 강화 상태입니다!\n");
 	printf_s("마을로 돌아갑니다.\n");
 	_getch();
 }
 
-void BlackSmith::ReinforceWeapon(class UPlayer& _Player)
+void BlackSmith::ReinforceEquip(class UPlayer& _Player)
 {
-	int Random = rand() % 2;
 	int CurrentGold = _Player.GetGold();
 	int CurrentAtt = _Player.GetEquipAtt();
-	int ReinforceCost = (_Player.GetEquipAtt() * 100);
+	int ReinforceCost = ((CurrentAtt + 1) * 100);
 	int Result = CurrentGold - ReinforceCost;
 	_Player.SetGold(Result);
 
-	if (0 == Result)
+	int Random = rand() % 2;
+	if (1 == Random)
 	{
 		_Player.SetEquipAtt(CurrentAtt + 1);
+		printf_s("강화 성공\n");
+		_getch();
 	}
 	else
 	{
@@ -42,6 +44,8 @@ void BlackSmith::ReinforceWeapon(class UPlayer& _Player)
 		{
 			_Player.SetEquipAtt(0);
 		}
+		printf_s("강화 실패\n");
+		_getch();
 	}
 }
 
@@ -68,13 +72,13 @@ void BlackSmith::InPlayer(class UPlayer& _Player/*, int& Result*/)
 		{
 		case '1':
 
-			if (IsMaxWeaponLv(_Player))
+			if (IsMaxEquip(_Player))
 			{
-				PrintMaxWeapon();
+				PrintMaxEquip();
 				return;
 			}
 
-			ReinforceWeapon(_Player);
+			ReinforceEquip(_Player);
 			
 
 			// 확률은 전부다 2분의 1
