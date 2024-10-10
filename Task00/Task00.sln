@@ -27,7 +27,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BaseSystem", "BaseSystem\Ba
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRPG003ClassFile", "TextRPG003ClassFile\TextRPG003ClassFile.vcxproj", "{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRpgLast", "..\..\Multi\GM2\CPP\TextRpgLast\TextRpgLast.vcxproj", "{58A974E7-93F1-4486-88D3-4C0854C19308}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRpgLast", "TextRpgLast\TextRpgLast.vcxproj", "{58A974E7-93F1-4486-88D3-4C0854C19308}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

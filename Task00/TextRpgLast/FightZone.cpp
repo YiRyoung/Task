@@ -91,5 +91,5 @@ UZone* UFightZone::InPlayer()
 	// 기존의 코드를 그냥 사용해도 될겁니다.
 	// 4시 15분까지 마을로 돌아가는 코드 아래쪽에 넣어주세요.
 	
-	return nullptr;
+	return GetZone(0);
 }
