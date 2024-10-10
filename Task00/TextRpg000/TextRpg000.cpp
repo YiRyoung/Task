@@ -4,8 +4,6 @@
 #include <iostream>
 #include <conio.h>
 
-const int LINECOUNT = 50;
-
 const int LINECOUNT = 10;
 
 // 절차지향 
