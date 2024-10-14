@@ -62,7 +62,6 @@ public:
 
 	void SetPixel(FIntPoint _Pos, char _Char);
 
-
 private:
 	// 상수 안됩니다.
 	char** Arr = nullptr;

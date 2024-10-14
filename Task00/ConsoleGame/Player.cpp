@@ -6,23 +6,33 @@
 
 void Player::BeginPlay()
 {
-	PlayerImage.Create({2, 2}, '@');
+	Super::BeginPlay();
+
+	RenderImage.Create({1, 1}, '@');
+	FIntPoint MaxSpot = ConsoleEngine::GetWindowSize();
+	FIntPoint StartSpot = { (MaxSpot.X / 2), (MaxSpot.Y / 2) };
+	SetActorLocation(StartSpot);
 }
 
-void Player::Tick(ConsoleImage* _BackBuffer)
+void Player::Tick()
 {
+	Super::Tick();
+	// ConsoleEngine::MainPlayer
+
+	// 타고가서 쓰게 할려는 방법.
+	// ConsoleEngine::GetEngine().GetPlayer()
+
 	// ConsoleImage& BackBuffer = *_BackBuffer;
 
 	// static은 전역이니까 객체가 필요없다.
 	ConsoleEngine::GetWindow();
-	FIntPoint MaxSpot = ConsoleEngine::GetWindowSize();
+	ConsoleEngine::GetWindowSize();
 
 	// 남에 코드 안건드리고 
 	GlobalValue::WindowPtr;
 	GlobalValue::WindowSize;
 
-	int SizeX = this->PlayerImage.GetImageSizeX();
-	int SizeY = this->PlayerImage.GetImageSizeY();
+	FIntPoint Spot = AActor::GetActorLocation();
 
 	int Value = _kbhit();
 	Enums::GAMEDIR Dir = Enums::GAMEDIR::NONE;
@@ -48,6 +58,15 @@ void Player::Tick(ConsoleImage* _BackBuffer)
 		case 's':
 			Dir = Enums::GAMEDIR::DOWN;
 			break;
+		case 'Z':
+		case 'z':
+		{
+			Bullet* NewBullet = ConsoleEngine::GetEngine().SpawnActor<Bullet>();
+
+			// 총알이 위로 올라가게도 만드세요.
+			NewBullet->SetActorLocation(GetActorLocation());
+			break;
+		}
 		default:
 			break;
 		}
@@ -56,34 +75,17 @@ void Player::Tick(ConsoleImage* _BackBuffer)
 
 	switch (Dir)
 	{
-	// X > 0, Y >0, X < 
 	case Enums::GAMEDIR::LEFT:
-		Pos += FIntPoint::LEFT;
-		if (Pos.X < 0)
-		{
-			Pos -= FIntPoint::LEFT;
-		}
+		AddActorLocation(FIntPoint::LEFT);
 		break;
 	case Enums::GAMEDIR::RIGHT:
-		Pos += FIntPoint::RIGHT;
-		if (Pos.X > MaxSpot.X - SizeX)
-		{
-			Pos -= FIntPoint::RIGHT;
-		}
+		AddActorLocation(FIntPoint::RIGHT);
 		break;
 	case Enums::GAMEDIR::UP:
-		Pos += FIntPoint::UP;
-		if (Pos.Y < 0)
-		{
-			Pos -= FIntPoint::UP;
-		}
+		AddActorLocation(FIntPoint::UP);
 		break;
 	case Enums::GAMEDIR::DOWN:
-		Pos += FIntPoint::DOWN;
-		if (Pos.Y > (MaxSpot.Y - SizeY))
-		{
-			Pos -= FIntPoint::DOWN;
-		}
+		AddActorLocation(FIntPoint::DOWN);
 		break;
 	default:
 		break;
@@ -92,13 +94,3 @@ void Player::Tick(ConsoleImage* _BackBuffer)
 	// Pos += FIntPoint::RIGHT;
 }
 
-void Player::Render(ConsoleImage* _BackBuffer)
-{
-	// delete _BackBuffer;
-	_BackBuffer->Copy(Pos, PlayerImage);
-}
-
-void Player::SetActorLocation(FIntPoint _Pos)
-{
-	Pos = _Pos;
-}
