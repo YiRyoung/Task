@@ -1,17 +1,29 @@
 #include "Actor.h"
+#include "Renderer.h"
 
 
 void AActor::BeginPlay()
 {
-
 }
+
 void AActor::Tick()
 {
 
 }
+
+Renderer* AActor::CreateDefaultSubObject()
+{
+	ImageRenderer = new Renderer();
+	return ImageRenderer;
+}
+
 void AActor::Render(ConsoleImage* _BackBuffer)
 {
-	_BackBuffer->Copy(Pos, RenderImage);
+	if (nullptr == ImageRenderer)
+	{
+		return;
+	}
+	_BackBuffer->Copy(Pos, ImageRenderer->RenderImage);
 }
 
 void AActor::SetActorLocation(FIntPoint _Pos)

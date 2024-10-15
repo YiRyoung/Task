@@ -40,6 +40,5 @@ public:
 private:
 	DataType* Values;
 	int DataSize = 0;
-    
 };
 
