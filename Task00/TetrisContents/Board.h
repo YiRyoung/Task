@@ -12,7 +12,7 @@ public:
 		return *MainBoard;
 	}
 
-	char Test1(FIntPoint _Pos);
+	char PickBlock(FIntPoint _Pos);
 
 	void DrawObstacle(FIntPoint _Pos);
 

@@ -17,7 +17,7 @@ void Block::Tick()
 {
 	Super::Tick();
 
-	if (Board::GetBoard().Test1({ GetActorLocation().X, (GetActorLocation().Y + 1)
+	if (Board::GetBoard().PickBlock({ GetActorLocation().X, (GetActorLocation().Y + 1)
 		}) == '@')
 	{
 		FIntPoint TempPos = GetActorLocation();
@@ -47,6 +47,7 @@ void Block::Tick()
 		case 'S':
 		case 's':
 			AddActorLocation(FIntPoint::DOWN);
+
 			if ((GetActorLocation().Y + 1) == 5)
 			{
 				FIntPoint TempPos = GetActorLocation();

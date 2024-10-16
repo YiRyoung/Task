@@ -21,7 +21,7 @@ void Board::DrawObstacle(FIntPoint _Pos)
 	Render->Active = true;
 }
 
-char Board::Test1(FIntPoint _Pos)
+char Board::PickBlock(FIntPoint _Pos)
 {
 	return Render->RenderImage.GetPixel(_Pos.X, _Pos.Y);
 }
