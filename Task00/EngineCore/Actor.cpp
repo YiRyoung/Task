@@ -23,6 +23,12 @@ void AActor::Render(ConsoleImage* _BackBuffer)
 	{
 		return;
 	}
+
+	if (false == ImageRenderer->Active)
+	{
+		return;
+	}
+
 	_BackBuffer->Copy(Pos, ImageRenderer->RenderImage);
 }
 
@@ -36,7 +42,7 @@ void AActor::AddActorLocation(FIntPoint _Dir)
 	Pos += _Dir;
 }
 
-void AActor::MinusActorLocation(FIntPoint _Dir)
-{
-	Pos -= _Dir;
-}
+//void AActor::MinusActorLocation(FIntPoint _Dir)
+//{
+//	Pos -= _Dir;
+//}
