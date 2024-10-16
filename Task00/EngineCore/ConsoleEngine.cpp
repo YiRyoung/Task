@@ -12,7 +12,7 @@ ConsoleEngine* ConsoleEngine::MainEngine = nullptr;
 
 ConsoleEngine::ConsoleEngine()
 {
-
+	MainEngine = this;
 }
 
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <EngineBase/EngineMath.h>
 #include <vector>
 
 class ConsoleEngine
@@ -34,6 +35,7 @@ public:
 		// static 변수를 기반으로 사용하면 된다.
 		MainEngine->EngineActive = false;
 	}
+
 
 private:
 	// 생성자를 막았어.

@@ -1,9 +1,11 @@
 #include "ConsoleWindow.h"
 #include <iostream>
 
+UConsoleWindow* UConsoleWindow::MainWindow = nullptr;
+
 UConsoleWindow::UConsoleWindow()
 {
-
+	MainWindow = this;
 }
 
 void UConsoleWindow::SetScreenSize(int _X, int _Y)

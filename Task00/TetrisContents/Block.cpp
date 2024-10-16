@@ -1,7 +1,9 @@
 #include "Block.h"
 #include <EngineCore/Renderer.h>
+#include <EngineCore/ConsoleEngine.h>
 #include <conio.h>
 
+#include "Board.h"
 
 void Block::BeginPlay()
 {
@@ -14,6 +16,14 @@ void Block::BeginPlay()
 void Block::Tick()
 {
 	Super::Tick();
+
+	if (Board::GetBoard().Test1({ GetActorLocation().X, (GetActorLocation().Y + 1)
+		}) == '@')
+	{
+		FIntPoint TempPos = GetActorLocation();
+		SetActorLocation({ 0, 0 });
+		Board::GetBoard().DrawObstacle({ TempPos.X, (TempPos.Y) });
+	}
 
 	int Value = _kbhit();
 	if (Value != 0)
@@ -37,6 +47,17 @@ void Block::Tick()
 		case 'S':
 		case 's':
 			AddActorLocation(FIntPoint::DOWN);
+			if ((GetActorLocation().Y + 1) == 5)
+			{
+				FIntPoint TempPos = GetActorLocation();
+				SetActorLocation({ 0, 0 });
+				Board::GetBoard().DrawObstacle({TempPos.X, (TempPos.Y)});
+			}
+			break;
+		//case 'T':
+		//case 't':
+			//Board::GetBoard().TestCode(this->GetActorLocation());
+			// AddActorLocation(FIntPoint::DOWN);
 			break;
 		default:
 			break;

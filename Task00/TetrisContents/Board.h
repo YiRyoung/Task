@@ -6,5 +6,17 @@ class Board : public AActor
 public:
 	void BeginPlay() override;
 	void Tick() override;
-};
 
+	static Board& GetBoard()
+	{
+		return *MainBoard;
+	}
+
+	char Test1(FIntPoint _Pos);
+
+	void DrawObstacle(FIntPoint _Pos);
+
+private:
+	Renderer* Render = nullptr;
+	static Board* MainBoard;
+};

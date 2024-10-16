@@ -5,7 +5,6 @@
 
 class UConsoleWindow
 {
-
 public:
 	UConsoleWindow();
 
@@ -31,12 +30,12 @@ public:
 
 	void SetScreenSize(int _X, int _Y);
 
-	void WindowSetPixel(FIntPoint _Value, char _Text = ' ')
+	void WindowSetPixel(FIntPoint _Value, char _Text = '*')
 	{
 		WindowSetPixel(_Value.X, _Value.Y, _Text);
 	}
 
-	void WindowSetPixel(int _X, int _Y, char _Text = ' ');
+	void WindowSetPixel(int _X, int _Y, char _Text = '*');
 
 	void Clear();
 
@@ -50,11 +49,17 @@ public:
 		return BackBuffer;
 	}
 
+	UConsoleWindow& GetMainWindow()
+	{
+		return *MainWindow;
+	}
+
 private:
 	int FrameDelay = 250;
 
 	// 최종적으로 우리 눈에 보일 이미지.
 	// 여기에다가 그리지 않으면 눈에 보이지 않아요.
 	ConsoleImage BackBuffer;
+	static UConsoleWindow* MainWindow;
 };
 

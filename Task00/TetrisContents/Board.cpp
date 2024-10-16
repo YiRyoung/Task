@@ -1,10 +1,32 @@
 #include "Board.h"
 #include <EngineCore/Renderer.h>
+#include <EngineCore/ConsoleEngine.h>
+#include <conio.h>
+
+Board* Board::MainBoard = nullptr;
 
 void Board::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Renderer* Render = CreateDefaultSubObject();
-	Render->RenderImage.Create({ 1, 1 }, '@');
+	Render = CreateDefaultSubObject();
+	Render->RenderImage.Create({ 3, 5 }, '*');
+	MainBoard = this;
+	Render->Active = false;
+}
+
+void Board::DrawObstacle(FIntPoint _Pos)
+{
+	Render->RenderImage.SetPixel(_Pos, '@');
+	Render->Active = true;
+}
+
+char Board::Test1(FIntPoint _Pos)
+{
+	return Render->RenderImage.GetPixel(_Pos.X, _Pos.Y);
+}
+
+void Board::Tick()
+{
+
 }
