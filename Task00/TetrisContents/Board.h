@@ -12,9 +12,10 @@ public:
 		return *MainBoard;
 	}
 
-	char PickBlock(FIntPoint _Pos);
+	char PickPos(FIntPoint _Pos);
 
 	void DrawObstacle(FIntPoint _Pos);
+	void EraseObstacle(FIntPoint _Pos);
 
 private:
 	Renderer* Render = nullptr;

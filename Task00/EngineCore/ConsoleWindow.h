@@ -28,6 +28,11 @@ public:
 		SetScreenSize(_Value.X, _Value.Y);
 	}
 
+	const FIntPoint GetScreenSize()
+	{
+		BackBuffer.GetImageSize();
+	}
+
 	void SetScreenSize(int _X, int _Y);
 
 	void WindowSetPixel(FIntPoint _Value, char _Text = '*')

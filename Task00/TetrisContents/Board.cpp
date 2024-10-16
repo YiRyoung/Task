@@ -21,12 +21,17 @@ void Board::DrawObstacle(FIntPoint _Pos)
 	Render->Active = true;
 }
 
-char Board::PickBlock(FIntPoint _Pos)
+void Board::EraseObstacle(FIntPoint _Pos)
+{
+	Render->RenderImage.SetPixel(_Pos, '*');
+}
+
+char Board::PickPos(FIntPoint _Pos)
 {
 	return Render->RenderImage.GetPixel(_Pos.X, _Pos.Y);
 }
 
 void Board::Tick()
 {
-
+	
 }
