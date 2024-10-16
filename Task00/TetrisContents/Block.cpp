@@ -17,9 +17,7 @@ void Block::BeginPlay()
 void Block::Tick()
 {
 	Super::Tick();
-
-	IsCheck();
-	CheckLine();
+	CheckBoard();
 	
 	int Value = _kbhit();
 	if (Value != 0)
@@ -49,6 +47,7 @@ void Block::Tick()
 		}
 	}
 
+	IsCheck();
 }
 
 void Block::IsCheck()
@@ -60,7 +59,7 @@ void Block::IsCheck()
 		SetActorLocation({ 0, 0 });
 		Board::GetBoard().DrawObstacle({ TempPos.X, TempPos.Y });
 	}
-	else if (GetBlock() == '@')	// 밑에 블럭이 있는지
+	else if (GetNextBlock() == '@')	// 밑에 블럭이 있는지
 	{
 		FIntPoint TempPos = GetActorLocation();
 
@@ -69,33 +68,77 @@ void Block::IsCheck()
 	}
 }
 
-char Block::GetBlock()
+char Block::GetBlock(FIntPoint _Pos)
+{
+	return Board::GetBoard().PickPos(_Pos);
+}
+
+char Block::GetNextBlock()
 {
 	return Board::GetBoard().PickPos({ GetActorLocation().X, ((GetActorLocation().Y + 1)) });
 }
 
-void Block::CheckLine()
+bool Block::CheckLine(int _y)
 {
-	for (int i = 0; i < 5; i++)
+	int count = 0;
+	for (int i = 2; i >= 0; i--)
 	{
-		int Count = 0;
-
-		for (int j = 0; j < 3; j++)
+		FIntPoint CurPos = { i, _y };
+		if (GetBlock(CurPos) == '@')
 		{
-			char ch = Board::GetBoard().PickPos({ j, i });
-			if (ch == '@')
-			{
-				Count++;
-			}
-		}
-		if (Count == 3)
-		{
-			for (int k = 0; k < 3; k++)
-			{
-				Board::GetBoard().EraseObstacle({ k, i });
-			}
-			return;
+			count++;
 		}
 	}
-	// return false;
+
+	if (count == 3)
+	{
+		return true;
+	}
+	return false;
+}
+
+void Block::EraseLine(int _y)
+{
+	for (int k = 0; k < 3; k++)
+	{
+		FIntPoint ErasePos = { k, _y };
+		Board::GetBoard().EraseObstacle(ErasePos);
+	}
+}
+
+
+void Block::DownBoard()
+{
+	for (int i = 3; i > 0 ; i--)
+	{
+		for (int j = 2; j >= 0; j--)
+		{
+			if (j == 0 && i == 0)
+			{
+				continue;
+			}
+			FIntPoint CurPos = { j, i };
+			if (GetBlock(CurPos) == '@' && GetNextBlock() == '*')
+			{
+				Board::GetBoard().DrawObstacle({ j, (i + 1) });
+				Board::GetBoard().EraseObstacle(CurPos);
+			}
+		}
+	}
+}
+void Block::CheckBoard()
+{
+	for (int i = 4; i >= 0; i--)
+	{
+		// 한 줄씩 확인
+		if (CheckLine(i))
+		{
+			EraseLine(i);
+
+			// 블럭 재배치
+			DownBoard();
+		}
+			
+		return;
+	}
 }

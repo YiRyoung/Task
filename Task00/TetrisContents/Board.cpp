@@ -17,8 +17,9 @@ void Board::BeginPlay()
 
 void Board::DrawObstacle(FIntPoint _Pos)
 {
-	Render->RenderImage.SetPixel(_Pos, '@');
+	char ch = PickPos(_Pos);
 	Render->Active = true;
+	Render->RenderImage.SetPixel(_Pos, '@');
 }
 
 void Board::EraseObstacle(FIntPoint _Pos)

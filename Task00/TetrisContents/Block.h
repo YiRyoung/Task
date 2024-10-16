@@ -7,9 +7,16 @@ public:
 	void BeginPlay() override;
 	void Tick() override;
 
-	char GetBlock();
+	char GetBlock(FIntPoint _Pos);
+	char GetNextBlock();
+
+	bool CheckLine(int y);
+
 	void IsCheck();
-	void CheckLine();
+	void CheckBoard();
+	
+	void EraseLine(int y);
+	void DownBoard();
 private:
 };
 
