@@ -7,12 +7,12 @@ public:
 	void BeginPlay() override;
 	void Tick() override;
 
-	char GetBlock(FIntPoint _Pos);
-	char GetNextBlock();
+	const char GetBlock(FIntPoint _Pos);
+	const char GetNextBlock();
 
-	bool CheckLine(FIntPoint _BoardSize, int y);
+	const bool CheckLine(FIntPoint _BoardSize, int y);
 
-	void IsCheck();
+	void CheckObstacle();
 	void CheckBoard();
 	
 	void EraseLine(FIntPoint _BoardSize, int y);

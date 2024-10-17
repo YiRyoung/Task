@@ -47,10 +47,10 @@ void Block::Tick()
 		}
 	}
 
-	IsCheck();
+	CheckObstacle();
 }
 
-void Block::IsCheck()
+void Block::CheckObstacle()
 {
 	// ¹Ù´Ú¿¡ ´ê¾Ò´ÂÁö
 	if ((GetActorLocation().Y + 1) == 5)
@@ -68,17 +68,17 @@ void Block::IsCheck()
 	}
 }
 
-char Block::GetBlock(FIntPoint _Pos)
+const char Block::GetBlock(FIntPoint _Pos)
 {
 	return Board::GetBoard().PickPos(_Pos);
 }
 
-char Block::GetNextBlock()
+const char Block::GetNextBlock()
 {
 	return Board::GetBoard().PickPos({ GetActorLocation().X, ((GetActorLocation().Y + 1)) });
 }
 
-bool Block::CheckLine(FIntPoint _BoardSize, int _y)
+const bool Block::CheckLine(FIntPoint _BoardSize, int _y)
 {
 	int count = 0;
 
