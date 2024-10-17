@@ -54,18 +54,16 @@ void Block::Tick()
 
 void Block::CheckObstacle(FIntPoint _BoardSize)
 {
+	FIntPoint TempPos = GetActorLocation();
 
 	// 바닥에 닿았는지
 	if ((GetActorLocation().Y + 1) == _BoardSize.Y)
 	{
-		FIntPoint TempPos = GetActorLocation();
 		SetActorLocation({ 0, 0 });
 		Board::GetBoard().DrawObstacle({ TempPos.X, TempPos.Y });
 	}
 	else if (GetNextBlock() == '@')	// 밑에 블럭이 있는지
 	{
-		FIntPoint TempPos = GetActorLocation();
-
 		SetActorLocation({ 0, 0 });
 		Board::GetBoard().DrawObstacle({ TempPos.X, TempPos.Y });
 	}
