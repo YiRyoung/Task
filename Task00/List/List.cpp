@@ -51,7 +51,7 @@ int main()
         // 1. 릭 없애기 
         // 2. push_front 만들기
 
-        UList Newint;
+        UList<int> Newint;
         Newint.push_back(0);
         Newint.push_back(1);
         Newint.push_back(2);
@@ -62,13 +62,13 @@ int main()
 
         int a = 0;
 
-        UList::iterator TestIter = Newint.begin();
+        UList<int>::iterator TestIter = Newint.begin();
         ++TestIter;
         TestIter = Newint.erase(TestIter);
 
 
-        UList::iterator BeginIter = Newint.begin();
-        UList::iterator EndIter = Newint.end();
+        UList<int>::iterator BeginIter = Newint.begin();
+        UList<int>::iterator EndIter = Newint.end();
         for (; BeginIter != EndIter; ++BeginIter)
         {
             int& Value = *BeginIter;

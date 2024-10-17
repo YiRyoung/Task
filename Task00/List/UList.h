@@ -2,11 +2,11 @@
 #include <assert.h>
 
 
-typedef int DataType;
+//typedef int DataType;
 
 // 중단점이나 디버깅할때 그냥 자료형이 
 // 정해져 있는것이 보기가 더 편해서 이방법을 많이 사용했다.
-// template<typename DataType>
+template<typename DataType>
 class UList
 {
 public:
