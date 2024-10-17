@@ -30,7 +30,7 @@ public:
 
 	const FIntPoint GetScreenSize()
 	{
-		BackBuffer.GetImageSize();
+		return BackBuffer.GetImageSize();
 	}
 
 	void SetScreenSize(int _X, int _Y);

@@ -17,7 +17,13 @@ public:
 	void DrawObstacle(FIntPoint _Pos);
 	void EraseObstacle(FIntPoint _Pos);
 
+	const FIntPoint GetBoardSize()
+	{
+		return BoardSize;
+	}
+
 private:
 	Renderer* Render = nullptr;
+	FIntPoint BoardSize;
 	static Board* MainBoard;
 };

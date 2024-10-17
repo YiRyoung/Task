@@ -10,13 +10,13 @@ public:
 	char GetBlock(FIntPoint _Pos);
 	char GetNextBlock();
 
-	bool CheckLine(int y);
+	bool CheckLine(FIntPoint _BoardSize, int y);
 
 	void IsCheck();
 	void CheckBoard();
 	
-	void EraseLine(int y);
-	void DownBoard();
+	void EraseLine(FIntPoint _BoardSize, int y);
+	void DownBoard(FIntPoint _BoardSize);
 private:
 };
 
