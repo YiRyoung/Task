@@ -17,6 +17,8 @@ void Block::BeginPlay()
 void Block::Tick()
 {
 	Super::Tick();
+	FIntPoint MaxSize = Board::GetBoard().GetBoardSize();
+
 	CheckBoard();
 	
 	int Value = _kbhit();
@@ -47,13 +49,14 @@ void Block::Tick()
 		}
 	}
 
-	CheckObstacle();
+	CheckObstacle(MaxSize);
 }
 
-void Block::CheckObstacle()
+void Block::CheckObstacle(FIntPoint _BoardSize)
 {
+
 	// ¹Ù´Ú¿¡ ´ê¾Ò´ÂÁö
-	if ((GetActorLocation().Y + 1) == 5)
+	if ((GetActorLocation().Y + 1) == _BoardSize.Y)
 	{
 		FIntPoint TempPos = GetActorLocation();
 		SetActorLocation({ 0, 0 });

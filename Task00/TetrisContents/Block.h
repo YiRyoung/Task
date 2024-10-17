@@ -12,7 +12,7 @@ public:
 
 	const bool CheckLine(FIntPoint _BoardSize, int y);
 
-	void CheckObstacle();
+	void CheckObstacle(FIntPoint _BoardSize);
 	void CheckBoard();
 	
 	void EraseLine(FIntPoint _BoardSize, int y);
