@@ -83,7 +83,7 @@ public:
 
     ~UList()
     {
-        UListNode* TempNode = StartNode->Next;
+        UListNode* TempNode = StartNode;
 
         while (TempNode != EndNode)
         {
@@ -95,6 +95,12 @@ public:
                 delete ReturnNode;
                 ReturnNode = nullptr;
             }
+        }
+
+        if (nullptr != EndNode)
+        {
+            delete EndNode;
+            EndNode = nullptr;
         }
     }
 
