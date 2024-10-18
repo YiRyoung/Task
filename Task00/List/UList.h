@@ -11,6 +11,9 @@ class UList
 {
 public:
     class UListNode
+
+
+
     {
         friend UList;
         // friend iterator;
